@@ -3,33 +3,63 @@
 { config, pkgs, ... }:
 
 let
+  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+  masterTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
   my-theme = {
-          # normal
-          color0 = "#1d2021";
-          color1 = "#fb543f";
-          color2 = "#95c085";
-          color3 = "#fac03b";
-          color4 = "#0d6678";
-          color5 = "#8f4673";
-          color6 = "#8ba59b";
-          color7 = "#a89984";
+    color0 = "#272822";
+    color1 = "#f92672";
+    color2 = "#a6e22e";
+    color3 = "#f4bf75";
+    color4 = "#66d9ef";
+    color5 = "#ae81ff";
+    color6 = "#a1efe4";
+    color7 = "#f8f8f2";
 
-          # bright
-          color8 =  "#665c54";
-          color9 =  "#fe8625";
-          color10 = "#32302f";
-          color11 = "#504945";
-          color12 = "#928374";
-          color13 = "#d5c4a1";
-          color14 = "#a87322";
-          color15 = "#fdf4c1";
+    # bright
+    color8  = "#75715e";
+    color9  = "#fd971f";
+    color10 = "#383830";
+    color11 = "#49483e";
+    color12 = "#a59f85";
+    color13 = "#f5f4f1";
+    color14 = "#cc6633";
+    color15 = "#f9f8f5";
+
+    # Darktt
+    # normal
+    # color0 = "#1d2021";
+    # color1 = "#fb543f";
+    # color2 = "#95c085";
+    # color3 = "#fac03b";
+    # color4 = "#0d6678";
+    # color5 = "#8f4673";
+    # color6 = "#8ba59b";
+    # color7 = "#a89984";
+
+    # # bright
+    # color8 =  "#665c54";
+    # color9 =  "#fe8625";
+    # color10 = "#32302f";
+    # color11 = "#504945";
+    # color12 = "#928374";
+    # color13 = "#d5c4a1";
+    # color14 = "#a87322";
+    # color15 = "#fdf4c1";
   };
 in {
-  nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   "openssl-1.0.2u"
-  # ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+      master = import masterTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
   imports = [ # Include the results of the hardware scan.
     ./host/hardware-configuration.nix # Host-specific hardware configuration
     <home-manager/nixos>
@@ -68,7 +98,7 @@ in {
 
   console = {
     font = "Lat2-Terminus16";
-  keyMap = "us";
+    keyMap = "us";
   };
 
   # Set your time zone.
@@ -108,12 +138,6 @@ in {
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = true;
 
-  # Fix Intel CPU throttling effecting ThinkPads
-  services = {
-    emacs.enable = false;
-    # AMD cpu time
-    # throttled.enable = true;
-  };
 
   boot.plymouth.enable = false;
 
@@ -178,7 +202,7 @@ in {
             type = "custom/text";
             content = "notarock @ ${config.networking.hostName}";
             format-foreground = my-theme.color7;
-            format-underline = my-theme.color1;
+            format-background = my-theme.color4;
           };
 
           "module/cpu" = {
@@ -279,9 +303,7 @@ in {
           };
         };
 
-        script = ''
-        MONITOR=$(polybar -m | grep primary | awk '{print $1}' | sed '$s/.$//'); USER=$(whoami); polybar main &
-        '';
+        script = "";
       };
 
       xsession.windowManager.xmonad = {
@@ -294,6 +316,11 @@ in {
         "XTerm*faceName" = "dejavu sans mono";
         "Xcursor.size"= "32";
         "Xcursor.theme"= "Bibata Oil";
+      };
+
+      programs.emacs = {
+        enable = true;
+        package = pkgs.emacs27;
       };
 
       programs.git = {
@@ -310,6 +337,14 @@ in {
         extraConfig = ''
       rofi.dpi: 0
     '';
+      };
+
+      programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+        defaultCommand = ''${pkgs.fd}/bin/fd --follow --type f --exclude="'.git'" .'';
+        defaultOptions = [ "--exact" "--cycle" "--layout=reverse" ];
+        enableFishIntegration = false;
       };
 
       programs.zsh = {
@@ -341,65 +376,66 @@ in {
         };
       };
 
+
       programs.kitty = {
         enable = true;
-      font.name = "Essential PragmataPro";
-      settings = {
-        font_size = "13.0";
-        enable_audio_bell = false;
-        open_url_with = "firefox";
-        scrollback_lines = 5000;
-        cursor_shape = "block";
-        cursor_blink_interval = "1.0";
-        cursor_stop_blinking_after = "1.0";
-        cursor_text_color = "background";
-        copy_on_select = "no";
-        mouse_hide_wait = "3.0";
-        sync_to_monitor = "yes";
-        enabled_layouts =  "Vertical";
+        font.name = "Essential PragmataPro";
+        settings = {
+          font_size = "14.0";
+          enable_audio_bell = false;
+          open_url_with = "firefox";
+          scrollback_lines = 5000;
+          cursor_shape = "block";
+          cursor_blink_interval = "1.0";
+          cursor_stop_blinking_after = "1.0";
+          cursor_text_color = "background";
+          copy_on_select = "no";
+          mouse_hide_wait = "3.0";
+          sync_to_monitor = "yes";
+          enabled_layouts =  "Vertical";
 
           # Base16 Darktooth - kitty color config
           # Scheme by Jason Milkins (https://github.com/jasonm23)
-          background = "#1d2021";
-          foreground = "#a89984";
-          selection_background = "#a89984";
-          selection_foreground = "#1d2021";
-          url_color = "#928374";
-          cursor = "#a89984";
-          active_border_color = "#665c54";
-          inactive_border_color = "#32302f";
-          active_tab_background = "#1d2021";
-          active_tab_foreground = "#a89984";
-          inactive_tab_background = "#32302f";
-          inactive_tab_foreground = "#928374";
-          tab_bar_background = "#32302f";
+          background = my-theme.color0;
+          foreground = my-theme.color7;
+          selection_background = my-theme.color7;
+          selection_foreground = my-theme.color0;
+          url_color = my-theme.color12;
+          cursor = my-theme.color1;
+          active_border_color = my-theme.color8;
+          inactive_border_color = my-theme.color10;
+          active_tab_background = my-theme.color12;
+          active_tab_foreground = my-theme.color7;
+          inactive_tab_background = my-theme.color8;
+          inactive_tab_foreground = my-theme.color7;
+          tab_bar_background = my-theme.color10;
 
           # normal
-          color0 = "#1d2021";
-          color1 = "#fb543f";
-          color2 = "#95c085";
-          color3 = "#fac03b";
-          color4 = "#0d6678";
-          color5 = "#8f4673";
-          color6 = "#8ba59b";
-          color7 = "#a89984";
+          color0 = my-theme.color0;
+          color1 = my-theme.color1;
+          color2 = my-theme.color2;
+          color3 = my-theme.color3;
+          color4 = my-theme.color4;
+          color5 = my-theme.color5;
+          color6 = my-theme.color6;
+          color7 = my-theme.color7;
 
           # bright
-          color8 =  "#665c54";
-          color9 =  "#fe8625";
-          color10 = "#32302f";
-          color11 = "#504945";
-          color12 = "#928374";
-          color13 = "#d5c4a1";
-          color14 = "#a87322";
-          color15 = "#fdf4c1";
+          color8 =  my-theme.color8;
+          color9 =  my-theme.color9;
+          color10 = my-theme.color10;
+          color11 = my-theme.color11;
+          color12 = my-theme.color12;
+          color13 = my-theme.color13;
+          color14 = my-theme.color14;
+          color15 = my-theme.color15;
         };
 
       };
 
       programs.zsh.oh-my-zsh = {
         enable = true;
-        theme = "agnoster";
+        theme = "dpoggi";
         plugins = [
           "git"
           "git-flow"
@@ -471,12 +507,11 @@ in {
   #     '';
   # };
 
-
   environment.systemPackages = with pkgs; [
     qemu_kvm
 
     wget curl
-    vim neovim emacs
+    vim neovim
     git tig
     ack tree exa fd ripgrep bc bat
     gnupg pass
@@ -517,7 +552,7 @@ in {
     # muh games
     #
     brogue
-    discord
+    master.discord
     steam
     minecraft
     #
@@ -573,9 +608,11 @@ in {
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine
     gnomeExtensions.system-monitor
-    gnomeExtensions.impatience
+    gnomeExtensions.appindicator
 
     tldr
+
+    nodejs-14_x
 
     spotify
     ccls
@@ -604,9 +641,18 @@ in {
     gdk-pixbuf
     librsvg
     gnumake
+    cmake
+
+    youtube-dl
+    flameshot
+    amber-theme
+
+    python-language-server
+    leiningen
+    clojure
 
     # pkglist
-    ];
+  ];
 
 
 
@@ -633,6 +679,9 @@ in {
 
   services.udev.packages = [ pkgs.yubikey-personalization pkgs.libu2f-host ];
   services.pcscd.enable = true;
+  services.printing.enable = true;
+  services.printing.drivers = with pkgs; [ hplip ];
+
   # environment.shellInit = ''
   # export GPG_TTY="$(tty)"
   # gpg-connect-agent /bye
@@ -645,5 +694,4 @@ in {
   environment.sessionVariables = {
     GDK_PIXBUF_MODULE_FILE = "$(echo ${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/*/loaders.cache)";
   };
-
 }

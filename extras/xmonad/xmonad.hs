@@ -72,6 +72,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_0     ), spawn "rofi -show window")
 
     , ((modm .|. shiftMask, xK_s     ), spawn "flameshot gui")
+    , ((modm .|. shiftMask, xK_e     ), spawn "emacsclient -c")
     , ((modm,               xK_p     ), spawn "rofi-pass")
     , ((modm,               xK_r     ), spawn "rofi -e \"$(eval $(rofi -dmenu))\"")
 
@@ -191,7 +192,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = spacing 15 $ Tall nmaster delta ratio
+     tiled   = spacing 10 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -254,6 +255,8 @@ myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "nextcloud &"
   spawnOnce "picom &"
+  spawnOnce "emacs --daemon"
+  spawnOnce "MONITOR=$(polybar -m | grep primary | awk '{print $1}' | sed '$s/.$//'); USER=$(whoami); polybar main &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
