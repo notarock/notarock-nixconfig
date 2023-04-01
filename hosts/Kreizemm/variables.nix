@@ -1,0 +1,1 @@
+{ mainMonitor = "DisplayPort-0"; }
