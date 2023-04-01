@@ -13,7 +13,7 @@
     ./notarock
   ];
 
-  services.xserver.displayManager.defaultSession = "gnome";
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.wallpaper.mode = "tile";
 
   home-manager = {

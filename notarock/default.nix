@@ -1,23 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  users.users.notarock = {
-    isNormalUser = true;
-    home = "/home/notarock";
-    description = "Nickname for root";
-    extraGroups = [ "wheel" "docker" "video" ];
-    shell = pkgs.zsh;
-    initialPassword = "Ch4ngeMoi%%%";
-  };
-
   home-manager = {
-    users.root.home.stateVersion = "22.11";
-    users.root.programs.git = {
-      enable = true;
-      extraConfig.safe.directory = "/home/notarock/src/dotfiles";
-    };
-
-    users.notarock = { pkgs, config, osConfig, ... }: {
+    users.roch = { pkgs, config, osConfig, ... }: {
       imports = [
         ./xdg.nix
         ./activation.nix
@@ -57,7 +42,7 @@
       };
 
       home = {
-        stateVersion = "22.11";
+        stateVersion = "23.11";
         username = "notarock";
         packages = with pkgs; [ xss-lock xsecurelock ];
         enableNixpkgsReleaseCheck = true;
@@ -98,11 +83,6 @@
           fadeDelta = 2;
         };
         flameshot = { enable = true; };
-      };
-
-      xresources.properties = {
-        "xft.dpi" = toString osConfig.my.dpi;
-        "XTerm*faceName" = "dejavu sans mono";
       };
 
     };

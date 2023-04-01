@@ -46,14 +46,14 @@
       enableZshIntegration = true;
     };
 
-    rofi = {
-      enable = true;
-      # separator = "solid";
-      font = "Essential PragmataPro 14";
-      theme = "/etc/nixos/extras/rofi/conf";
-      plugins = with pkgs; [ rofi-emoji ];
-      extraConfig = { dpi = osConfig.my.dpi; };
-    };
+    # rofi = {
+    #   enable = true;
+    #   # separator = "solid";
+    #   font = "Essential PragmataPro 14";
+    #   theme = "/etc/nixos/extras/rofi/conf";
+    #   plugins = with pkgs; [ rofi-emoji ];
+    #   extraConfig = { dpi = osConfig.my.dpi; };
+    # };
 
     git = {
       difftastic = {

@@ -11,6 +11,9 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     gotools.url = "git+https://go.googlesource.com/tools";
     gotools.flake = false;
 
@@ -26,7 +29,7 @@
     stumpwm.flake = false;
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, darwin, ... }:
     let
       system = "x86_64-linux";
       nixpkgsPatched = let originPkgs = (import nixpkgs { inherit system; });
@@ -95,6 +98,17 @@
         Zonnarth = mkNixosConfiguration { hostname = "Zonnarth"; };
         Kreizemm = mkNixosConfiguration { hostname = "Kreizemm"; };
       };
+
+      darwinConfigurations."Wistari" = darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./darwin-configuration.nix
+          home-manager.darwinModules.home-manager
+          { home-manager.extraSpecialArgs = { inherit inputs; }; }
+        ];
+      };
+
       homeConfigurations = {
         # NixOS desktop config
         rdamour = home-manager.lib.homeManagerConfiguration {

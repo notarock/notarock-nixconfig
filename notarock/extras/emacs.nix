@@ -50,7 +50,7 @@ in {
 
   programs.emacs = { enable = true; };
 
-  home.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR; };
+  # home.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR; };
   systemd.user.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR; };
 
   xdg.configFile."emacs" = {
