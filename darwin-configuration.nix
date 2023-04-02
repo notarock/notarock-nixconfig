@@ -8,7 +8,7 @@
     ./notarock/roch.nix
     ./core/systemPackages.nix
   ];
-  
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = [
@@ -21,6 +21,10 @@
     };
     fonts = with pkgs; [
       nerdfonts
+      dejavu_fonts
+      open-sans
+      font-awesome
+      ibm-plex
     ];
   };
 
@@ -56,6 +60,8 @@
       "slack"
       "kitty"
       "rectangle"
+      "firefox"
+      "google-chrome"
       "lens"
       "mpv"
       "yubico-authenticator"
