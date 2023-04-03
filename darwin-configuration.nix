@@ -3,22 +3,15 @@
 {
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
-  imports = [
-    ./core/enableFlake.nix
-    ./notarock/roch.nix
-    ./core/systemPackages.nix
-  ];
+  imports =
+    [ ./core/enableFlake.nix ./notarock/roch.nix ./core/systemPackages.nix ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [
-    pkgs.vim
-  ];
+  environment.systemPackages = [ pkgs.vim ];
 
   fonts = {
-    fontDir = {
-      enable = true;
-    };
+    fontDir = { enable = true; };
     fonts = with pkgs; [
       nerdfonts
       dejavu_fonts
@@ -30,7 +23,10 @@
 
   programs.zsh.enable = true;
 
-  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   users = {
     users.roch = {
@@ -44,17 +40,14 @@
   homebrew = {
     enable = true;
     brewPrefix = "/usr/local/bin";
-    brews = [
-    ];
+    brews = [ ];
     onActivation = {
       cleanup = "zap";
       upgrade = true;
     };
-    taps = [
-      "homebrew/cask"
-      "homebrew/cask-drivers"
-    ];
+    taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
     casks = [
+      "1password"
       "discord"
       "spotify"
       "slack"
@@ -79,7 +72,14 @@
       max-jobs = lib.mkDefault 8;
 
       sandbox = false;
-      extra-sandbox-paths = [ "/System/Library/Frameworks" "/System/Library/PrivateFrameworks" "/usr/lib" "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
+      extra-sandbox-paths = [
+        "/System/Library/Frameworks"
+        "/System/Library/PrivateFrameworks"
+        "/usr/lib"
+        "/private/tmp"
+        "/private/var/tmp"
+        "/usr/bin/env"
+      ];
     };
   };
 
