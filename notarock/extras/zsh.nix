@@ -80,6 +80,7 @@
 
       export PATH="/usr/local/go/bin:$PATH"
       export PATH="$HOME/go/bin:$PATH"
+      export PATH="$HOME/.rd/bin:$PATH"
 
       bci () { <<<"$*" bc -l; }
     '';

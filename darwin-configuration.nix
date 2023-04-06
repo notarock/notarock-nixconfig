@@ -21,6 +21,8 @@
     ];
   };
 
+  environment.variables = { EDITOR = "vim"; };
+
   programs.zsh.enable = true;
 
   programs.gnupg.agent = {
@@ -47,6 +49,7 @@
     };
     taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
     casks = [
+      "raycast"
       "1password"
       "discord"
       "spotify"

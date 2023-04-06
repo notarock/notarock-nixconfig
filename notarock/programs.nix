@@ -55,9 +55,12 @@
       delta.enable = false;
       enable = true;
       userName = "Roch D'Amour";
-      userEmail = "roch.damour@gmail.com";
+      userEmail = "roch.damour@arctiq.ca";
+      signing.key = "05C0574AE39248FF189245A5D3EE7D152CBEACCB";
+      signing.signByDefault = true;
       extraConfig = { pull.rebase = false; };
     };
+
   };
 
 }
