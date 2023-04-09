@@ -23,9 +23,16 @@ in {
 
     nodejs-19_x
 
-    python3
-    nodePackages.pyright
     terraform
+
+    python3
+    python3Packages.black
+    python3Packages.isort
+    python3Packages.pyls-isort
+    python3Packages.python-lsp-server
+    python3Packages.nose
+    python3Packages.pytest
+    pipenv
 
     haskellPackages.haskell-language-server
     haskellPackages.hoogle
