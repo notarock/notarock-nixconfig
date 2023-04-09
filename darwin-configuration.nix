@@ -3,8 +3,7 @@
 {
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
-  imports =
-    [ ./core/enableFlake.nix ./notarock/roch.nix ./core/systemPackages.nix ];
+  imports = [ ./core/enableFlake.nix ./core/systemPackages.nix ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -28,14 +27,6 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-  };
-
-  users = {
-    users.roch = {
-      home = "/Users/roch";
-      isHidden = false;
-      shell = pkgs.zsh;
-    };
   };
 
   # Homebrew integration
@@ -72,7 +63,6 @@
     gc.automatic = true;
     settings = {
       # package = pkgs.nix;
-      trusted-users = [ "roch" "@admin" ];
       max-jobs = lib.mkDefault 8;
 
       sandbox = false;
