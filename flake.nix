@@ -99,7 +99,7 @@
         Kreizemm = mkNixosConfiguration { hostname = "Kreizemm"; };
       };
 
-      darwinConfigurations."Wistari" = darwin.lib.darwinSystem {
+      darwinConfigurations.wistari = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
         modules = [ 

@@ -49,6 +49,7 @@
     };
     taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
     casks = [
+      "steam"
       "raycast"
       "1password"
       "discord"
