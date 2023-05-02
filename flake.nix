@@ -143,14 +143,15 @@
         Kreizemm = mkNixosConfiguration { hostname = "Kreizemm"; };
       };
 
-      darwinConfigurations.wistari = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./darwin-configuration.nix
-          home-manager.darwinModules.home-manager
-          { home-manager.extraSpecialArgs = { inherit inputs; }; }
-        ];
+      # Darwin configurations
+      darwinConfigurations = {
+        Wistari = mkDarwinConfiguration { # Macbook Pro 16" 2019 for work
+          hostname = "Wistari";
+          username = "roch";
+          email =
+            "roch.damour@arctiq.ca"; # If you email me here I *will* ignore you.
+          system = "x86_64-darwin";
+        };
       };
 
       # Home Manager configurations
