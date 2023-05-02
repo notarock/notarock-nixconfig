@@ -40,6 +40,8 @@
     };
     taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
     casks = [
+      "visual-studio-code"
+      "yubico-yubikey-manager"
       "steam"
       "raycast"
       "1password"
@@ -52,6 +54,7 @@
       "google-chrome"
       "lens"
       "mpv"
+      "openvpn-connect"
       "yubico-authenticator"
     ];
   };

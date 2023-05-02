@@ -145,7 +145,7 @@
 
       # Darwin configurations
       darwinConfigurations = {
-        wistari = mkDarwinConfiguration { # Macbook Pro 16" 2019 for work
+        Wistari = mkDarwinConfiguration { # Macbook Pro 16" 2019 for work
           hostname = "Wistari";
           username = "roch";
           email =

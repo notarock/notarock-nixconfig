@@ -2,10 +2,7 @@
 
 {
   programs.vim = {
-    plugins = with pkgs.vimPlugins;
-      [
-        #vim-wakatime
-      ];
+    plugins = with pkgs.vimPlugins; [ vim-wakatime vim-terraform ];
 
     enable = true;
     extraConfig = ''
