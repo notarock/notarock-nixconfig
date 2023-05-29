@@ -13,7 +13,7 @@
     ./extras/starship.nix
   ];
 
-  myTheme = import ../themes/base16-snazzy.nix;
+  myTheme = import ../themes/base16-solarflare-light.nix;
 
   manual = {
     html.enable = true;
