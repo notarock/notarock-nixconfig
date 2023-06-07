@@ -40,6 +40,8 @@
     };
     taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
     casks = [
+      "gimp"
+      "krita"
       "visual-studio-code"
       "yubico-yubikey-manager"
       "steam"
