@@ -30,8 +30,23 @@
   xdg.configFile."scripts/emacs.sh" ={
     executable = true;
     text = ''
-    #!/bin/zsh
-      osascript -e 'activate application' "emacs"
+#!/bin/zsh
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title emacs
+# @raycast.mode silent
+
+# Optional parameters:
+# @raycast.icon 🤖
+
+# Documentation:
+# @raycast.description emacs from shell
+# @raycast.author Roch
+
+# zsh -c /Users/roch/.nix-profile/bin/emacs
+
+osascript -e 'activate application "emacs"'
     '';
   };
 
