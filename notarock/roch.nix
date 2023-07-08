@@ -13,7 +13,7 @@
     ./extras/starship.nix
   ];
 
-  myTheme = import ../themes/base16-solarflare-light.nix;
+  myTheme = import ../themes/base16-snazzy.nix;
 
   manual = {
     html.enable = true;
@@ -26,4 +26,13 @@
   };
 
   home.keyboard.layout = "ca,fr";
+
+  xdg.configFile."scripts/emacs.sh" ={
+    executable = true;
+    text = ''
+    #!/bin/zsh
+      osascript -e 'activate application' "emacs"
+    '';
+  };
+
 }

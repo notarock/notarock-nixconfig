@@ -1,5 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
+# defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 {
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
@@ -32,18 +34,22 @@
   # Homebrew integration
   homebrew = {
     enable = true;
-    brewPrefix = "/usr/local/bin";
+    # brewPrefix = "/usr/local/bin";
     brews = [ ];
     onActivation = {
       cleanup = "zap";
       upgrade = true;
     };
-    taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
+    taps = [ 
+      "homebrew/cask"
+#      "homebrew/cask-drivers"
+    ];
     casks = [
       "gimp"
+      "nextcloud"
       "krita"
       "visual-studio-code"
-      "yubico-yubikey-manager"
+      # "yubico-yubikey-manager"
       "steam"
       "raycast"
       "1password"
@@ -56,8 +62,8 @@
       "google-chrome"
       "lens"
       "mpv"
-      "openvpn-connect"
-      "yubico-authenticator"
+#      "openvpn-connect"
+"yubico-authenticator"
     ];
   };
 
@@ -88,4 +94,35 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
+  system.keyboard.enableKeyMapping = true;
+
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
+
+  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
+
+  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
+  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
+
+  system.defaults.dock.wvous-tr-corner = 12; # Top left -> Notification Center
+  system.defaults.dock.wvous-tl-corner = 11; # Top Right -> Launchpad
+
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true; # Light / Dark modes
+
+  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
+  system.defaults.finder = {
+    ShowStatusBar = true;
+    _FXShowPosixPathInTitle = true;
+    ShowPathbar = true;
+    FXPreferredViewStyle = "Nlsv";
+    AppleShowAllExtensions = true;
+  };
+
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" =
+  "/System/Library/Sounds/Frog.aiff";
+
+   system.defaults.dock.show-recents = false;
+
+  services.skhd.enable = false;
+
 }
+
