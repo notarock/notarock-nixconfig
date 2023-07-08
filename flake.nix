@@ -152,6 +152,14 @@
             "roch.damour@arctiq.ca"; # If you email me here I *will* ignore you.
           system = "x86_64-darwin";
         };
+
+        hectasio = mkDarwinConfiguration { # Mac M2 Max
+          hostname = "Hectasio";
+          username = "notarock";
+          email =
+            "roch.damour@gmain.com"; # If you email me here I *will* ignore you.
+          system = "aarch64-darwin";
+        };
       };
 
       # Home Manager configurations
