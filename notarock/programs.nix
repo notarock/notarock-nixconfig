@@ -54,7 +54,7 @@
       delta.enable = false;
       enable = true;
       userName = "Roch D'Amour";
-      signing.key = "05C0574AE39248FF189245A5D3EE7D152CBEACCB";
+      signing.key = "8B837A899A76EF04EED7B7BF041F365A7B126DD7";
       signing.signByDefault = true;
       extraConfig = { pull.rebase = false; };
     };
