@@ -21,7 +21,7 @@ in {
     gotests
     gore
 
-    nodejs-19_x
+    nodejs_latest
 
     terraform
 
@@ -39,7 +39,10 @@ in {
     haskellPackages.cabal-install
 
     rustc
+    rustup
     cargo
+    clippy
+
     html-tidy
     nodePackages.stylelint
     nodePackages.js-beautify

@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    act
 
     wget
     curl
@@ -93,18 +94,24 @@
     cheminot-ets
     awscli2
 
-    (retroarch.override {
-      cores = with libretro; [
-        bsnes-mercury
-        beetle-snes
-        mgba
-        mupen64plus
+    # <<<<<<< HEAD
+    #     (retroarch.override {
+    #       cores = with libretro; [
+    #         bsnes-mercury
+    #         beetle-snes
+    #         mgba
+    #         mupen64plus
+    # =======
+    #     qemu
 
-        snes9x
-        snes9x2010
-        yabause
-      ];
-    })
+    #     (import inputs.nixpkgs-stable { inherit (pkgs) config system; }).ansible
+    # >>>>>>> 99b1884 (Docker and rust)
+
+    #         snes9x
+    #         snes9x2010
+    #         yabause
+    #       ];
+    #     })
 
     # (import inputs.nixpkgs-stable { inherit (pkgs) config system; }).ansible
     # (import inputs.nixpkgs-stable { inherit (pkgs) config system; }).screenkey
