@@ -40,9 +40,9 @@
       cleanup = "zap";
       upgrade = true;
     };
-    taps = [ 
+    taps = [
       "homebrew/cask"
-#      "homebrew/cask-drivers"
+      #      "homebrew/cask-drivers"
     ];
     casks = [
       "gimp"
@@ -62,8 +62,7 @@
       "google-chrome"
       "lens"
       "mpv"
-#      "openvpn-connect"
-"yubico-authenticator"
+      "yubico-authenticator"
     ];
   };
 
@@ -106,7 +105,8 @@
   system.defaults.dock.wvous-tr-corner = 12; # Top left -> Notification Center
   system.defaults.dock.wvous-tl-corner = 11; # Top Right -> Launchpad
 
-  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true; # Light / Dark modes
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically =
+    true; # Light / Dark modes
 
   system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
   system.defaults.finder = {
@@ -118,9 +118,9 @@
   };
 
   system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" =
-  "/System/Library/Sounds/Frog.aiff";
+    "/System/Library/Sounds/Frog.aiff";
 
-   system.defaults.dock.show-recents = false;
+  system.defaults.dock.show-recents = false;
 
   services.skhd.enable = false;
 

@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    act
 
     wget
     curl
@@ -91,6 +92,8 @@
     sqlite
     wordnet
     awscli2
+
+    qemu
 
     (import inputs.nixpkgs-stable { inherit (pkgs) config system; }).ansible
 

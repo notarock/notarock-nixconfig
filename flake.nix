@@ -157,7 +157,7 @@
           hostname = "Hectasio";
           username = "notarock";
           email =
-            "roch.damour@gmain.com"; # If you email me here I *will* ignore you.
+            "roch.damour@gmail.com"; # If you email me here I *will* ignore you.
           system = "aarch64-darwin";
         };
       };
