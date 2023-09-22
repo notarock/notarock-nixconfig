@@ -39,7 +39,6 @@ in {
     haskellPackages.cabal-install
 
     rustc
-    rustup
     cargo
     clippy
 

@@ -45,10 +45,12 @@
       #      "homebrew/cask-drivers"
     ];
     casks = [
+      "obs"
       "gimp"
       "nextcloud"
       "krita"
       "visual-studio-code"
+      "microsoft-office"
       # "yubico-yubikey-manager"
       "steam"
       "raycast"
