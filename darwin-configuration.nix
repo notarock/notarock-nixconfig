@@ -35,7 +35,7 @@
   homebrew = {
     enable = true;
     # brewPrefix = "/usr/local/bin";
-    brews = [ ];
+    brews = [ "java" ];
     onActivation = {
       cleanup = "zap";
       upgrade = true;

@@ -25,7 +25,7 @@
       nix-direnv = { enable = true; };
     };
 
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };
@@ -34,10 +34,10 @@
 
     gh = {
       enable = true;
-      settings = {
-        git_protocol = "ssh";
-        prompt = "enabled";
-      };
+      # settings = {
+      #   git_protocol = "ssh";
+      #   prompt = "enabled";
+      # };
     };
 
     broot = {

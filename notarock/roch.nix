@@ -13,7 +13,7 @@
     ./extras/starship.nix
   ];
 
-  myTheme = import ../themes/base16-snazzy.nix;
+  myTheme = import ../themes/base16-gruvbox-light-medium.nix;
 
   manual = {
     html.enable = true;
@@ -27,26 +27,26 @@
 
   home.keyboard.layout = "ca,fr";
 
-  xdg.configFile."scripts/emacs.sh" ={
+  xdg.configFile."scripts/emacs.sh" = {
     executable = true;
     text = ''
-#!/bin/zsh
+      #!/bin/zsh
 
-# Required parameters:
-# @raycast.schemaVersion 1
-# @raycast.title emacs
-# @raycast.mode silent
+      # Required parameters:
+      # @raycast.schemaVersion 1
+      # @raycast.title emacs
+      # @raycast.mode silent
 
-# Optional parameters:
-# @raycast.icon 🤖
+      # Optional parameters:
+      # @raycast.icon 🤖
 
-# Documentation:
-# @raycast.description emacs from shell
-# @raycast.author Roch
+      # Documentation:
+      # @raycast.description emacs from shell
+      # @raycast.author Roch
 
-# zsh -c /Users/roch/.nix-profile/bin/emacs
+      # zsh -c /Users/roch/.nix-profile/bin/emacs
 
-osascript -e 'activate application "emacs"'
+      osascript -e 'activate application "emacs"'
     '';
   };
 

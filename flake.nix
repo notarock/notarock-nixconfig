@@ -153,7 +153,7 @@
           system = "x86_64-darwin";
         };
 
-        hectasio = mkDarwinConfiguration { # Mac M2 Max
+        Hectasio = mkDarwinConfiguration { # Mac M2 Max
           hostname = "Hectasio";
           username = "notarock";
           email =
