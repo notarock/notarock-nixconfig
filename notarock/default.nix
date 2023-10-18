@@ -35,7 +35,7 @@
         '';
       in "${wallpaper}/share/${bgOut}";
 
-      myTheme = import ../themes/base16-snazzy.nix;
+      myTheme = import ../themes/base16-gruvbox-light-medium.nix;
 
       manual = {
         html.enable = true;
