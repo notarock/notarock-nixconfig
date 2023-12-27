@@ -54,7 +54,6 @@
 
   programs.zsh.oh-my-zsh = {
     enable = true;
-    theme = "dpoggi";
     plugins = [
       "git"
       "git-flow"

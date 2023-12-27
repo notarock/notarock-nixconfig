@@ -83,7 +83,7 @@ in {
     (let ((font-family "Essential PragmataPro"))
       (setq doom-variable-pitch-font (font-spec :family "IBM Plex Sans Condensed")
             doom-font (font-spec :family font-family :size 14)
-            doom-big-font (font-spec :family font-family :size 24)))
+            doom-big-font (font-spec :family font-family :size 32)))
   '';
 
 }

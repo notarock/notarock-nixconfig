@@ -13,7 +13,7 @@
     ./extras/starship.nix
   ];
 
-  myTheme = import ../themes/base16-gruvbox-light-medium.nix;
+  myTheme = import ../themes/base16-gruvbox-dark-medium.nix;
 
   manual = {
     html.enable = true;
