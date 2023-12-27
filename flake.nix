@@ -4,7 +4,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
-    doom-emacs.url = "github:hlissner/doom-emacs/master";
+    doom-emacs.url = "github:doomemacs/doomemacs/master";
     doom-emacs.flake = false;
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -154,6 +154,14 @@
         };
 
         Hectasio = mkDarwinConfiguration { # Mac M2 Max
+          hostname = "Hectasio";
+          username = "notarock";
+          email =
+            "roch.damour@gmail.com"; # If you email me here I *will* ignore you.
+          system = "aarch64-darwin";
+        };
+
+        hectasio = mkDarwinConfiguration { # Mac M2 Max
           hostname = "Hectasio";
           username = "notarock";
           email =

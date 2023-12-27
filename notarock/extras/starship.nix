@@ -55,7 +55,7 @@
       };
 
       time = {
-        disabled = true;
+        disabled = false;
         format = "%H:%M";
       };
     };

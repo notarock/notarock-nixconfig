@@ -7,7 +7,12 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-gruvbox-light)
+(setq doom-theme 'doom-gruvbox)
+
+;; (let ((os-theme (shell-command-to-string "defaults read -g AppleInterfaceStyle 2>/dev/null")))
+;;   (if (string-match-p "Dark" os-theme)
+;;       (setq doom-theme 'doom-gruvbox)        ;; Set to your preferred dark theme
+;;     (setq doom-theme 'doom-gruvbox-light)))  ;; Set to your preferred light theme
 
 (setq display-line-numbers-type t)
 
