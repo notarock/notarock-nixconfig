@@ -42,7 +42,7 @@
   (let* ((base-factor 0.80)
          (a-width (* (display-pixel-width) (/ base-factor 2)))
          (a-height (* (display-pixel-height) base-factor))
-         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
+         (a-left (min 300 (truncate (/ (- (display-pixel-width) a-width) 2))))
          (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
     (set-frame-position (selected-frame) a-left a-top)
     (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
