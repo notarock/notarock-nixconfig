@@ -7,7 +7,7 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-monokai-classic)
 
 ;; (let ((os-theme (shell-command-to-string "defaults read -g AppleInterfaceStyle 2>/dev/null")))
 ;;   (if (string-match-p "Dark" os-theme)
@@ -99,7 +99,7 @@
   (add-hook 'org-mode-hook 'mixed-pitch-mode)
   (add-hook 'org-mode-hook (lambda ()
                              (setq show-trailing-whitespace t)))
-  (setq  ispell-local-dictionary "fr-toutesvariantes"
+  (setq  ispell-local-dictionary "american"
          org-fontify-whole-heading-line t
          org-hide-emphasis-markers t
          org-directory "~/org/"
@@ -135,7 +135,7 @@
      (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
 
 (after! markdown
-  (setq ispell-local-dictionary "fr-toutesvariantes"))
+  (setq ispell-local-dictionary "american"))
 
 (map! :ne "C-S-k" #'drag-stuff-up)
 (map! :ne "C-S-j" #'drag-stuff-down)
@@ -143,7 +143,6 @@
 (map! :ne "C-S-h" #'drag-stuff-left)
 
 (map! :ne "SPC =" #'indent-buffer)
-(map! :ne "SPC #" #'comment-or-uncomment-region)
 
 (map! :ne "SPC j g" #'dumb-jump-go)
 (map! :ne "SPC j b" #'dumb-jump-back)
