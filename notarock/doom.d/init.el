@@ -20,10 +20,11 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company +childframe)           ; the ultimate code completion backend
+       (company +childframe +tng)           ; the ultimate code completion backend
        ;;helm                          ; the *other* search engine for love and life
        ;;ido                           ; the other *other* search engine...
-       (ivy +icons +fuzzy)             ; a search engine for love and life
+       ;;(ivy +icons +fuzzy)             ; a search engine for love and life
+       (vertico +childframe +icons)
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -84,11 +85,10 @@
        ;; vterm                ; another terminals in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax +childframe +flymake)
+               ; tasing you for every semicolon you forget
        (spell               ; tasing you for misspelling mispellingl
-        +flyspell
-        +everywhere
-        +hunspell)
+        +everywhere)
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools

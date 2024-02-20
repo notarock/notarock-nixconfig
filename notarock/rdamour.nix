@@ -100,7 +100,6 @@
       enable = true;
       package = pkgs.go_1_19;
       packages = {
-        "github.com/mdempsky/gocode" = inputs.gotools;
         "golang.org/x/tools/cmd/goimports" = inputs.gotools;
         "golang.org/x/tools/cmd/godoc" = inputs.gotools;
         "golang.org/x/tools/cmd/gorename" = inputs.gotools;
