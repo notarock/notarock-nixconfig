@@ -16,6 +16,10 @@
   services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.wallpaper.mode = "tile";
 
+  # This seems to hang the activation script
+  # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1473408913
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -98,7 +102,7 @@
   programs.noisetorch.enable = true;
 
   security.sudo.extraRules = [
-    {
+
       users = [ "notarock" ];
       commands = [{
         command = "/run/current-system/sw/bin/nixos-rebuild";

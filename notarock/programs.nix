@@ -7,7 +7,6 @@
       package = pkgs.go_1_20;
       packages = {
         "github.com/motemen/gore/cmd/gore" = inputs.gore;
-        "github.com/mdempsky/gocode" = inputs.gotools;
         "golang.org/x/tools/cmd/goimports" = inputs.gotools;
         "golang.org/x/tools/cmd/godoc" = inputs.gotools;
         "golang.org/x/tools/cmd/gorename" = inputs.gotools;

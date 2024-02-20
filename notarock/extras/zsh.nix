@@ -64,7 +64,6 @@
       "ansible"
       "terraform"
       "kubectl"
-      "vagrant"
       "npm"
       "node"
       "python"

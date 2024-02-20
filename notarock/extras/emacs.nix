@@ -16,14 +16,13 @@ in {
     editorconfig-core-c
 
     gopls
-    gocode
     gomodifytags
     gotests
     gore
 
     nodejs_latest
 
-    terraform
+    opentofu
 
     python3
     python3Packages.black
@@ -57,11 +56,15 @@ in {
     })
   ];
 
-  programs.emacs = { enable = true; };
+  programs.emacs = { 
+    enable = true;
+    package = pkgs.emacs29;
+  };
 
   # home.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR; };
   systemd.user.sessionVariables = { inherit DOOMLOCALDIR DOOMDIR; };
 
+  # Put doom emacs into .config/emacs
   xdg.configFile."emacs" = {
     source = pkgs.applyPatches {
       name = "doom-emacs-source";

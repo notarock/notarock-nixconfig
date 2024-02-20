@@ -48,7 +48,6 @@
     pass
     colordiff
     nmap
-    vagrant
     gimp
     neofetch
 
