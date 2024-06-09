@@ -45,6 +45,7 @@
       #      "homebrew/cask-drivers"
     ];
     casks = [
+      "lm-studio"
       "obs"
       "gimp"
       "nextcloud"
