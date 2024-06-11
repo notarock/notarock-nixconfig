@@ -1,0 +1,46 @@
+name: Doom
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install emacs 
+        run: sudo apt-get install -y emacs
+
+      - name: Clone doom emacs and install
+        run: |
+          git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+          yes | ~/.config/emacs/bin/doom install
+
+      - name: Show current dir and home 
+        run: |
+          ls -lart
+          ls -lart ~/.config
+          ls -lart ~/.config/emacs
+          ls -lart ~/.config/doom
+
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Place doom config folder in ~/.config 
+        run: rm -rf ~/.config/doom && cp -r notarock/doom.d ~/.config/doom
+
+      - name: Doom sync with personnal config 
+        run: ~/.config/emacs/bin/doom sync
+
+      - name: Compress emacs and doom config to upload as artifact
+        run: |
+          cp -r ~/.config/emacs ./emacs
+          cp -r ~/.config/doom ./doom
+          tar -czvf doomemacs-config.tar.gz ./emacs ./doom
+
+      - name: Upload doomemacs config
+        uses: actions/upload-artifact@v4
+        with:
+          name: doomemacs-config
+          path: doomemacs-config.tar.gz
+
+        
