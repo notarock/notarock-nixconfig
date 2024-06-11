@@ -2,8 +2,9 @@ name: Doom
 
 on:
   push:
-    branches:    
-      - '*'
+    paths:
+      - 'notarock/doom.d/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
