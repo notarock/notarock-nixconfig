@@ -1,6 +1,9 @@
 name: Doom
 
 on:
+  push:
+    branches:    
+      - '*'
   workflow_dispatch:
 
 jobs:
