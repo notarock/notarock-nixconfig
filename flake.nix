@@ -112,7 +112,7 @@
           users.users.${username} = {
             home = homePath;
             isHidden = false;
-            shell = nixpkgs.zsh;
+            # shell = nixpkgs.zsh;
           };
         };
 

@@ -29,7 +29,6 @@ in {
     python3Packages.isort
     python3Packages.pyls-isort
     python3Packages.python-lsp-server
-    python3Packages.nose
     python3Packages.pytest
     pipenv
 

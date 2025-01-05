@@ -12,13 +12,10 @@
   environment.systemPackages = [ pkgs.vim ];
 
   fonts = {
-    packages = with pkgs; [
-      nerdfonts
-      dejavu_fonts
-      open-sans
-      font-awesome
-      ibm-plex
-    ];
+    packages = with pkgs;
+      [ dejavu_fonts open-sans font-awesome ibm-plex ]
+      ++ builtins.filter lib.attrsets.isDerivation
+      (builtins.attrValues pkgs.nerd-fonts);
   };
 
   environment.variables = { EDITOR = "vim"; };
@@ -94,8 +91,6 @@
       ];
     };
   };
-
-  services.activate-system.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

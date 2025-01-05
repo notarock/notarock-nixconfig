@@ -11,7 +11,7 @@
     ./extras/fzf.nix
     ./extras/kitty.nix
     ./extras/starship.nix
-    # ./extras/ghostty.nix
+    ./extras/ghostty.nix
   ];
 
   myTheme = import ../themes/base16-humanoid-dark.nix;
