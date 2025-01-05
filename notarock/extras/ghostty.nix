@@ -3,17 +3,38 @@
 {
   programs.ghostty = {
     enable = true;
-    package = pkgs.runCommandLocal "" { } "mkdir $out";
+    package = pkgs.emptyDirectory; # Explicitly override with null
+
     enableZshIntegration = true;
     settings = {
       theme = "notarock";
-      cursor-style = "block";
-      cursor-style-blink = "true";
 
       font-size = 14;
+
       font-family = "Essential PragmataPro";
       font-family-bold = "Essential PragmataPro Bold";
 
+      cursor-style = "block";
+      cursor-style-blink = "false";
+
+      background-opacity = 0.95;
+
+      keybind = [
+        "ctrl+w>enter=equalize_splits"
+
+        "ctrl+w>v=new_split:right"
+        "ctrl+w>s=new_split:down"
+        "ctrl+w>d=close_surface"
+
+        "ctrl+w>h=goto_split:left"
+        "ctrl+w>j=goto_split:bottom"
+        "ctrl+w>k=goto_split:top"
+        "ctrl+w>l=goto_split:right"
+
+        "ctrl+shift+enter=new_tab"
+
+        "global:cmd+grave_accent=toggle_quick_terminal"
+      ];
     };
 
     themes.notarock = {
