@@ -69,7 +69,7 @@
 
     pandoc
 
-    youtube-dl
+    yt-dlp
     hunspell
     hunspellDicts.en-ca
     hunspellDicts.fr-any

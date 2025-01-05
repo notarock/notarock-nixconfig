@@ -7,7 +7,7 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-monokai-classic)
+(setq doom-theme 'base16-humanoid-dark)
 
 ;; (let ((os-theme (shell-command-to-string "defaults read -g AppleInterfaceStyle 2>/dev/null")))
 ;;   (if (string-match-p "Dark" os-theme)

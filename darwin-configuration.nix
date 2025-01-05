@@ -12,8 +12,7 @@
   environment.systemPackages = [ pkgs.vim ];
 
   fonts = {
-    fontDir = { enable = true; };
-    fonts = with pkgs; [
+    packages = with pkgs; [
       nerdfonts
       dejavu_fonts
       open-sans
@@ -41,11 +40,12 @@
       upgrade = true;
     };
     taps = [
-      "homebrew/cask"
+      # "homebrew/cask"
       #      "homebrew/cask-drivers"
     ];
     casks = [
       "lm-studio"
+      "rustdesk"
       "obs"
       "gimp"
       "nextcloud"
@@ -60,6 +60,7 @@
       "spotify"
       "slack"
       "kitty"
+      "ghostty"
       "rectangle"
       "firefox"
       "google-chrome"
@@ -71,6 +72,10 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
+  ids.uids.nixbld = 350;
+  # ids.uids.nixbld = lib.mkForce 30000;
+
   nix = {
     configureBuildUsers = true;
     gc.automatic = true;
@@ -94,7 +99,7 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   system.keyboard.enableKeyMapping = true;
 

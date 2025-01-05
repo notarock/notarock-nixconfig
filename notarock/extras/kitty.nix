@@ -27,6 +27,7 @@
       selection_foreground = config.myTheme.color0;
       url_color = config.myTheme.color12;
       cursor = config.myTheme.color1;
+
       active_border_color = config.myTheme.color8;
       inactive_border_color = config.myTheme.color10;
       active_tab_background = config.myTheme.color12;

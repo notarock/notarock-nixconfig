@@ -35,7 +35,7 @@
         '';
       in "${wallpaper}/share/${bgOut}";
 
-      myTheme = import ../themes/base16-gruvbox-dark-medium.nix;
+      myTheme = import ../themes/base16-humanoid-dark.nix;
 
       manual = {
         html.enable = true;
@@ -43,7 +43,7 @@
       };
 
       home = {
-        stateVersion = "22.11";
+        stateVersion = "24.05";
         username = "roch";
         packages = with pkgs; [ xss-lock xsecurelock ];
         enableNixpkgsReleaseCheck = true;

@@ -8,7 +8,7 @@
     doom-emacs.flake = false;
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     darwin.url = "github:lnl7/nix-darwin/master";

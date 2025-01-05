@@ -4,7 +4,7 @@
   programs = {
     go = {
       enable = true;
-      package = pkgs.go_1_20;
+      package = pkgs.go_1_23;
       packages = {
         "github.com/motemen/gore/cmd/gore" = inputs.gore;
         "golang.org/x/tools/cmd/goimports" = inputs.gotools;
@@ -26,7 +26,7 @@
 
     eza = {
       enable = true;
-      enableAliases = true;
+      enableZshIntegration = true;
     };
 
     feh.enable = true;

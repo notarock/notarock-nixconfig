@@ -47,7 +47,7 @@
         +defaults)       ; default popup rules
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;; tabs              ; an tab bar for Emacs
-       ;; treemacs          ; a project drawer, like neotree but cooler
+       treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        (vc-gutter
         +diff-hl
@@ -86,9 +86,9 @@
 
        :checkers
        (syntax +childframe +flymake)
-               ; tasing you for every semicolon you forget
-       (spell               ; tasing you for misspelling mispellingl
-        +everywhere)
+                                        ; tasing you for every semicolon you forget
+       ;; (spell               ; tasing you for misspelling mispellingl
+       ;;  +everywhere)
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools

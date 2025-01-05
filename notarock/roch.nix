@@ -11,9 +11,10 @@
     ./extras/fzf.nix
     ./extras/kitty.nix
     ./extras/starship.nix
+    # ./extras/ghostty.nix
   ];
 
-  myTheme = import ../themes/base16-monokai.nix;
+  myTheme = import ../themes/base16-humanoid-dark.nix;
 
   manual = {
     html.enable = true;

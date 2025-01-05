@@ -7,7 +7,7 @@ build:
 	doom sync
 
 mac:
-	darwin-rebuild switch --flake '.#' -v -L
+	darwin-rebuild switch --flake '.#' -v -L --show-trace
 	doom sync
 
 hm:
